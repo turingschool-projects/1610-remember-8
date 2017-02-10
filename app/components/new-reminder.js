@@ -1,9 +1,6 @@
 import Ember from 'ember';
-
 export default Ember.Component.extend({
-
   store: Ember.inject.service(),
-
   actions: {
     submitReminder(){
       let date = new Date(document.querySelector(".date").value.split("/"));
@@ -14,5 +11,4 @@ export default Ember.Component.extend({
       }).save();
     }
   }
-
 });
