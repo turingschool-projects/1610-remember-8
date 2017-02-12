@@ -21,11 +21,26 @@ test('viewing the homepage', function(assert) {
 test('clicking on an individual item', function(assert) {
   server.createList('reminder', 5);
 
-  visit('/reminders');
+  visit('/');
   click('.spec-reminder-item:first');
 
   andThen(function() {
     assert.equal(currentURL(), '/reminders/1');
-    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), Ember.$('.spec-reminder-title:first').text().trim());
+    assert.equal($('.spec-reminder-item:first').text().trim(), $('.spec-reminder-title').text().trim());
   });
 });
+
+test('clicking the Add reminder button renders a new reminder', function(assert){
+    server.createList('reminder', 5);
+
+    visit('/reminders');
+    click('.spec-view-form');
+    andThen(function() {
+      assert.equal(currentURL(), '/reminders/new');
+    });
+
+    click('.spec-add-new');
+    andThen(function(){
+      assert.equal(find('.spec-reminder-item').length, 6);
+    });
+  });
