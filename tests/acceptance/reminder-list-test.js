@@ -44,3 +44,15 @@ test('clicking the Add reminder button renders a new reminder', function(assert)
       assert.equal(find('.spec-reminder-item').length, 6);
     });
   });
+
+test("if there are no reminders display no reminders text",
+function(assert){
+  server.createList('reminder', 0);
+
+  visit('/reminders');
+  andThen(function(){
+    assert.equal(find('.no-notes-display').length, 1);
+    assert.equal(find(".no-notes-display").text().trim(),
+      "No notes found.Click \"New Reminder\" to create a new note.");
+  })
+})
