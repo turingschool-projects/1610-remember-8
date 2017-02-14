@@ -74,9 +74,10 @@ test("clicking the edit button on a reminder lets you edit the reminder", functi
     click(".spec-edit-button")
   })
   andThen(function(){
-    assert.equal(currentURL(), "/reminders/edit/1",
+    assert.equal(currentURL(), "/reminders/1/edit",
       "current url is edit/1")
     find(".spec-edit-title").text("title test")
+    keyEvent(".spec-edit-title", "keyup", 13)
   })
   andThen(function(){
     assert.equal(find(".spec-edit-title").text().trim(), "title test",
