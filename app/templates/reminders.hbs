@@ -1,7 +1,6 @@
 {{outlet}}
 {{#if model}}
   {{#each model as |reminder|}}
-    <ul>
       <h2>
         {{#link-to "reminders.reminder"
                    reminder.id
@@ -9,7 +8,6 @@
         {{reminder.title}}
         {{/link-to}}
       </h2>
-    </ul>
   {{/each}}
 {{else}}
   <h3 class="no-notes-display">No notes found.<br/>Click "New Reminder" to create a new note.</h3>
