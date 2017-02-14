@@ -74,18 +74,21 @@ test("clicking the edit button on a reminder lets you edit the reminder", functi
     click(".spec-edit-button")
   })
   andThen(function(){
-    assert.equal(currentURL(), "/reminders/edit/1", "current url is edit/1")
+    assert.equal(currentURL(), "/reminders/edit/1",
+      "current url is edit/1")
     find(".spec-edit-title").text("title test")
   })
   andThen(function(){
-    assert.equal(find(".spec-edit-title").text().trim(), "title test")
+    assert.equal(find(".spec-edit-title").text().trim(), "title test",
+      "title has been edited to 'title test'")
   })
   andThen(function(){
     click(".spec-save-button")
   })
   andThen(function(){
     assert.equal(currentURL(), "/reminders/1", "current url is reminders/1")
-    assert.equal(find(".spec-reminder-title").text().trim(), "title test")
+    assert.equal(find(".spec-reminder-title").text().trim(), "title test",
+      "after clicking save, reminder title now has the new title 'title test'")
   })
 })
 
