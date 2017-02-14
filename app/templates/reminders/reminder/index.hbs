@@ -1,3 +1,6 @@
 <h2 class='spec-reminder-title'>{{model.title}}</h2>
 <li class='spec-reminder-date'>{{model.date}}</li>
 <li class='spec-reminder-notes'>{{model.notes}}</li>
+{{#link-to "reminders.reminder.edit" model class="spec-edit-button"}}
+  <button>edit</button>
+{{/link-to}}
