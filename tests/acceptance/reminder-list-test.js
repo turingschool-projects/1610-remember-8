@@ -53,3 +53,15 @@ test('clicking the Add reminder button renders a new reminder', function(assert)
       assert.equal(Ember.$('.spec-reminder-date').text().trim(), 'Mon Jan 28 1991 00:00:00 GMT-0700 (MST)', 'adds date to reminder list on submit');
     })
   });
+
+test("if there are no reminders display no reminders text",
+function(assert){
+  server.createList('reminder', 0);
+
+  visit('/reminders');
+  andThen(function(){
+    assert.equal(find('.no-notes-display').length, 1);
+    assert.equal(find(".no-notes-display").text().trim(),
+      "No notes found.Click \"New Reminder\" to create a new note.");
+  })
+})
