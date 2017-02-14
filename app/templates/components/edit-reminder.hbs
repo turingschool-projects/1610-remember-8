@@ -2,5 +2,5 @@
 <li class='spec-edit-date' contenteditable="true">{{model.date}}</li>
 <li class='spec-edit-notes' contenteditable="true">{{model.notes}}</li>
 {{#link-to "reminders.reminder" model.id}}
-  <button {{action "edit"}}>submit</button>
+  <button class="spec-save-button" {{action "edit"}}>save</button>
 {{/link-to}}
