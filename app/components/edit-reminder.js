@@ -13,6 +13,17 @@ export default Ember.Component.extend({
         record.set("notes",
           document.querySelector(".spec-edit-notes").innerHTML);
       })
+    },
+    reset(){
+      this.get("store").findRecord("reminder", this.model.id)
+      .then(function(record){
+        document.querySelector(".spec-edit-title")
+          .innerHTML = record.data.title;
+        document.querySelector(".spec-edit-date")
+          .innerHTML = record.data.date;
+        document.querySelector(".spec-edit-notes")
+          .innerHTML = record.data.notes;
+      })
     }
   }
 });
