@@ -99,7 +99,6 @@ test("clicking the reset button reverts reminder back to unsaved state", functio
   click(".spec-reminder-item:first");
   andThen(function(){
     originalTitle = find(".spec-reminder-title").text().trim();
-    console.log("test",find(".spec-reminder-title").text().trim());
     click(".spec-edit-button")
   })
   andThen(function(){
