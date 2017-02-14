@@ -3,8 +3,8 @@
   {{#each model as |reminder|}}
       <h2>
         {{#link-to "reminders.reminder"
-                   reminder.id
-                   class='spec-reminder-item'}}
+          reminder.id
+          class='spec-reminder-item'}}
         {{reminder.title}}
         {{/link-to}}
       </h2>
