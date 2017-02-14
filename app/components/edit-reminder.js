@@ -25,18 +25,12 @@ export default Ember.Component.extend({
       })
     },
     reset(){
-      this.get("store").findRecord("reminder", this.model.id)
-      .then(function(record){
-        document.querySelector(".spec-edit-title")
-          .innerHTML = record.data.title;
-        document.querySelector(".spec-edit-date")
-          .innerHTML = record.data.date;
-        document.querySelector(".spec-edit-notes")
-          .innerHTML = record.data.notes;
-      })
+      this.element.children[0].textContent = this.model.data.title;
+      this.element.children[1].textContent = this.model.data.date;
+      this.element.children[2].textContent = this.model.data.notes;
     },
-    update(data, field, i){
-      this.set(field, data.element.children[i].textContent)
+    update(field, i){
+      this.set(field, this.element.children[i].textContent)
     },
   }
 });
