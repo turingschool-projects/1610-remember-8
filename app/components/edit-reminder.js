@@ -24,6 +24,11 @@ export default Ember.Component.extend({
         record.save();
       })
     },
+    reset(){
+      this.element.children[0].textContent = this.model.data.title;
+      this.element.children[1].textContent = this.model.data.date;
+      this.element.children[2].textContent = this.model.data.notes;
+    },
     update(field, i){
       this.set(field, this.element.children[i].textContent)
     },
