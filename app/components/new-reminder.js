@@ -3,11 +3,12 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   actions: {
     submitReminder(){
-      let date = new Date(document.querySelector(".spec-input-date").value.split("/"));
-      return this.get("store").createRecord("reminder", {
-        title: document.querySelector(".spec-input-title").value,
+      this.getProperties("title", "date", "notes")
+      var date = new Date(this.getProperties("date").date.split("/"))
+      return this.get("store").createRecord("reminder",{
+        title: this.getProperties("title").title,
         date: date,
-        notes: document.querySelector(".spec-input-notes").value,
+        notes: this.getProperties("notes").notes
       }).save();
     }
   }
