@@ -1,6 +1,6 @@
 <form class="new-reminder-form" action="index.html" method="post">
-  <input class="spec-input-title" type="text" value="" placeholder="title...">
-  <input class="spec-input-date" type="text" value="" placeholder="date...(mm/dd/yyyy)">
-  <input class="spec-input-notes" type="text" value="" placeholder="notes...">
+  {{input class="spec-input-title" type="text" value=title placeholder="title..."}}
+  {{input class="spec-input-date" type="text" value=date placeholder="date...(mm/dd/yyyy)"}}
+  {{input class="spec-input-notes" type="text" value=notes placeholder="notes..."}}
   <button {{action "submitReminder"}} class="spec-add-new">submit</button>
 </form>
