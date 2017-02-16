@@ -4,3 +4,6 @@
 {{#link-to "reminders.reminder.edit" model class="spec-edit-button"}}
   <button>edit</button>
 {{/link-to}}
+{{#link-to "reminders"}}
+  {{delete-button reminder=model}}
+{{/link-to}}
