@@ -117,3 +117,40 @@ test("clicking the reset button reverts reminder back to unsaved state", functio
       "after reset button is clicked, title is back to the original title")
   })
 })
+
+test("there is a visual cue if changes are being made", function(assert){
+  server.createList("reminder", 1);
+  visit("/reminders");
+  click(".spec-reminder-item:first");
+  andThen(function(){
+    click(".spec-edit-button")
+  })
+  andThen(function(){
+    assert.equal(find(".spec-unsaved-text").attr("hidden"), "hidden")
+    fillIn(".spec-edit-title", "test text test")
+    fillIn(".spec-edit-date", "01/28/1995");
+    fillIn(".spec-edit-notes", "Tis are test notez");
+  })
+  andThen(function(){
+    assert.equal(find(".spec-unsaved-text").text().trim(), "You have unsaved changes")
+  })
+})
+test("reminders can be deleted from the list page", function(assert){
+  server.createList("reminder", 1);
+  visit("/reminders");
+  click(".delete-reminder")
+  andThen(function(){
+    assert.equal(Ember.$(".spec-reminder-item").length, 0);
+  })
+})
+test("reminders can be deleted from the individual reminder page", function(assert){
+  server.createList("reminder", 5);
+  visit("/reminders")
+  click(".spec-reminder-item:first");
+  andThen(function(){
+    click(".delete-reminder")
+  })
+  andThen(function(){
+    assert.equal(Ember.$(".spec-reminder-item").length, 4)
+  })
+})
