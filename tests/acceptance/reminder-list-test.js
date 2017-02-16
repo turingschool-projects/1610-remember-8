@@ -135,3 +135,22 @@ test("there is a visual cue if changes are being made", function(assert){
     assert.equal(find(".spec-unsaved-text").text().trim(), "You have unsaved changes")
   })
 })
+test("reminders can be deleted from the list page", function(assert){
+  server.createList("reminder", 1);
+  visit("/reminders");
+  click(".delete-reminder")
+  andThen(function(){
+    assert.equal(Ember.$(".spec-reminder-item").length, 0);
+  })
+})
+test("reminders can be deleted from the individual reminder page", function(assert){
+  server.createList("reminder", 5);
+  visit("/reminders")
+  click(".spec-reminder-item:first");
+  andThen(function(){
+    click(".delete-reminder")
+  })
+  andThen(function(){
+    assert.equal(Ember.$(".spec-reminder-item").length, 4)
+  })
+})
