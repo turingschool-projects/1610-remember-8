@@ -1,9 +1,6 @@
-<h2 class='spec-edit-title' contenteditable="true">{{input value=model.title}}</h2>
-<!-- <li class='spec-edit-date' contenteditable="true" onkeyup={{action "update" 'date' 1}}>{{model.date}}</li>
-<li class='spec-edit-notes' contenteditable="true" onkeyup={{action "update" 'notes' 2}}>{{model.notes}}</li> -->
-<!-- {{input class="spec-edit-title" value=model.title}}
+{{input class="spec-edit-title" value=model.title}}
 {{input class="spec-edit-title" value=model.date}}
-{{input class="spec-edit-title" value=model.notes}} -->
+{{input class="spec-edit-title" value=model.notes}}
 
 {{#link-to "reminders.reminder" model.id}}
   <button class="spec-save-button" {{action "save"}}>save</button>
