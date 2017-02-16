@@ -4,7 +4,6 @@ export default Ember.Component.extend({
 
   actions: {
     submitReminder(){
-      debugger;
       var date = new Date(this.getProperties("date").date.split("/"))
       return this.get("store").createRecord("reminder",{
         title: this.getProperties("title").title,
