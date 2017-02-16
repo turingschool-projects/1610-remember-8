@@ -5,7 +5,6 @@ export default Ember.Component.extend({
 
   actions: {
     delete(reminder){
-      debugger;
       this.get("store").findRecord("reminder", this.reminder.id, {reload: true})
       .then(function(record){
         record.destroyRecord();
